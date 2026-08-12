@@ -14,9 +14,9 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         :root {
-            --lava: #dd4814;
-            --lava-dim: #b83a10;
-            --lava-glow: rgba(221,72,20,0.15);
+            --lava: #ffe45c;
+            --lava-dim: #0bce7db6;
+            --lava-glow: rgba(255, 6, 143, 0.75);
             --lava-glow-strong: rgba(221,72,20,0.25);
             --bg: #0a0a0b;
             --bg2: #111113;
