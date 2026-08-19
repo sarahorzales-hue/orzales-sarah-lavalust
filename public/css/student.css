@@ -4,9 +4,16 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Trebuchet MS", Arial, sans-serif;
-    background: #fff9df;
+    background:
+        radial-gradient(circle at 8% 18%, rgba(242, 201, 76, 0.18) 0 45px, transparent 46px),
+        radial-gradient(circle at 92% 72%, rgba(242, 201, 76, 0.14) 0 55px, transparent 56px),
+        #fff9df;
     color: #3d2b1f;
     min-height: 100vh;
     overflow-x: hidden;
@@ -14,12 +21,8 @@ body {
 
 a {
     text-decoration: none;
+    color: inherit;
 }
-
-
-/* =========================================
-   BACKGROUND DECORATIONS
-========================================= */
 
 .pudding-bg,
 .profile-background {
@@ -33,23 +36,24 @@ a {
 .decor,
 .profile-decor {
     position: absolute;
-    opacity: 0.45;
-    font-size: 32px;
+    opacity: 0.38;
+    font-size: 30px;
+    user-select: none;
 }
 
 .decor-1 {
     top: 12%;
-    left: 7%;
+    left: 6%;
 }
 
 .decor-2 {
-    top: 25%;
-    right: 8%;
+    top: 28%;
+    right: 7%;
 }
 
 .decor-3 {
-    bottom: 18%;
-    left: 10%;
+    bottom: 19%;
+    left: 9%;
 }
 
 .decor-4 {
@@ -58,8 +62,8 @@ a {
 }
 
 .decor-5 {
-    top: 8%;
-    right: 30%;
+    top: 9%;
+    right: 28%;
 }
 
 .decor-a {
@@ -68,7 +72,7 @@ a {
 }
 
 .decor-b {
-    top: 30%;
+    top: 31%;
     right: 5%;
 }
 
@@ -82,57 +86,60 @@ a {
     right: 8%;
 }
 
-
-/* =========================================
-   GENERAL LAYOUT
-========================================= */
-
 .home-wrapper,
 .profile-wrapper {
     position: relative;
     z-index: 1;
     width: min(1120px, 92%);
-    margin: auto;
-    padding: 25px 0 45px;
+    margin: 0 auto;
+    padding: 24px 0 55px;
 }
-
-
-/* =========================================
-   NAVIGATION
-========================================= */
 
 .student-nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 22px;
-    margin-bottom: 28px;
 
-    background: rgba(255, 255, 255, 0.88);
+    padding: 13px 18px;
+    margin-bottom: 22px;
+
+    background: rgba(255, 255, 255, 0.92);
     border: 2px solid #f2c94c;
     border-radius: 20px;
 
     box-shadow: 0 8px 20px rgba(94, 67, 39, 0.08);
+
+    position: relative;
+    z-index: 5;
 }
 
 .nav-brand {
     display: flex;
     align-items: center;
-    gap: 9px;
+    gap: 10px;
 
+    color: #4a3020;
     font-size: 17px;
     font-weight: bold;
-    color: #4a3020;
+}
+
+.nav-brand::first-letter {
+    font-size: 20px;
 }
 
 .nav-profile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     padding: 9px 16px;
+
     border-radius: 14px;
 
     background: #f2c94c;
     color: #3d2b1f;
 
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
 
     transition: 0.2s ease;
@@ -143,106 +150,146 @@ a {
     background: #e8b92f;
 }
 
-
-/* =========================================
-   HOME HERO
-========================================= */
-
 .hero-card {
-    display: grid;
-    grid-template-columns: 1.35fr 0.65fr;
-    align-items: center;
-
     position: relative;
     overflow: hidden;
 
-    min-height: 440px;
-    padding: 55px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+    align-items: center;
 
-    background: #fff;
+    min-height: 500px;
+
+    padding: 48px 58px;
+
+    background: #ffffff;
     border: 3px solid #f2c94c;
-    border-radius: 36px;
+    border-radius: 38px;
 
-    box-shadow: 0 20px 45px rgba(88, 62, 30, 0.12);
+    box-shadow: 0 22px 50px rgba(88, 62, 30, 0.12);
 }
 
 .hero-card::before {
     content: "";
     position: absolute;
-    width: 260px;
-    height: 260px;
+
+    width: 300px;
+    height: 300px;
+
     border-radius: 50%;
 
     background: #fff3bd;
 
-    right: -80px;
-    top: -80px;
+    right: -90px;
+    top: -100px;
+
+    z-index: 0;
+}
+
+.hero-card::after {
+    content: "";
+    position: absolute;
+
+    width: 110px;
+    height: 110px;
+
+    border-radius: 50%;
+
+    background: #fff8d8;
+
+    left: -40px;
+    bottom: -35px;
+
+    z-index: 0;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
+
+    max-width: 560px;
 }
 
 .small-label,
 .profile-kicker {
+    display: inline-block;
+
     letter-spacing: 3px;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: bold;
+
     color: #a27619;
-    margin-bottom: 12px;
+
+    margin-bottom: 13px;
 }
 
 .hero-content h1 {
-    font-size: clamp(42px, 7vw, 76px);
-    line-height: 0.95;
+    font-size: clamp(45px, 6vw, 72px);
+    line-height: 0.94;
+
     color: #3d2b1f;
+
     margin-bottom: 18px;
 }
 
 .yellow-line {
-    width: 90px;
+    width: 86px;
     height: 7px;
+
     border-radius: 20px;
+
     background: #f2c94c;
-    margin-bottom: 22px;
+
+    margin-bottom: 20px;
 }
 
 .hero-description {
-    max-width: 600px;
+    max-width: 510px;
+
     color: #725b4b;
-    font-size: 17px;
+
+    font-size: 16px;
     line-height: 1.7;
+
     margin-bottom: 20px;
 }
 
 .student-badges {
     display: flex;
     flex-wrap: wrap;
-    gap: 9px;
-    margin-bottom: 28px;
+    gap: 8px;
+
+    margin-bottom: 25px;
 }
 
 .student-badges span {
+    display: inline-flex;
+    align-items: center;
+
     padding: 9px 13px;
+
     border-radius: 20px;
 
     background: #fff3bd;
     color: #684d21;
 
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bold;
 }
 
 .main-button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     padding: 13px 20px;
 
     border-radius: 16px;
 
     background: #4a3020;
-    color: white;
+    color: #ffffff;
 
+    font-size: 14px;
     font-weight: bold;
 
     transition: 0.2s ease;
@@ -251,28 +298,48 @@ a {
 .main-button:hover {
     transform: translateY(-3px);
     background: #6b4930;
+    box-shadow: 0 8px 18px rgba(74, 48, 32, 0.18);
 }
-
-
-/* =========================================
-   PUDDING CHARACTER
-========================================= */
 
 .hero-pudding {
     position: relative;
     z-index: 2;
+
+    min-height: 350px;
+
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .pudding-character {
+    position: relative;
+
     text-align: center;
-    transform: rotate(3deg);
+
+    transform: rotate(2deg);
+
+    padding-top: 20px;
+}
+
+.pudding-character::before {
+    content: "✦";
+
+    position: absolute;
+
+    top: -10px;
+    right: -15px;
+
+    color: #f2c94c;
+    font-size: 28px;
 }
 
 .pudding-hat {
-    font-size: 58px;
+    position: relative;
+    z-index: 2;
+
+    font-size: 55px;
+
     margin-bottom: -12px;
 }
 
@@ -281,69 +348,87 @@ a {
     justify-content: center;
     align-items: center;
 
-    width: 170px;
-    height: 105px;
+    width: 175px;
+    height: 108px;
 
     margin: auto;
 
     background: #f8ca45;
 
+    border: 4px solid #c89427;
     border-radius: 55% 55% 45% 45%;
 
-    border: 4px solid #c89427;
+    box-shadow:
+        0 10px 0 rgba(200, 148, 39, 0.12),
+        0 16px 28px rgba(88, 62, 30, 0.10);
 }
 
 .pudding-face span {
-    font-size: 30px;
+    font-size: 29px;
     color: #4a3020;
 }
 
 .pudding-body {
-    font-size: 100px;
-    margin-top: -25px;
+    font-size: 95px;
+    line-height: 0.9;
+
+    margin-top: -24px;
 }
 
-
-/* =========================================
-   HOME INFORMATION
-========================================= */
-
 .quick-info {
-    padding: 65px 0 20px;
+    padding: 42px 0 15px;
 }
 
 .section-heading {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
 
-    margin-bottom: 28px;
+    margin-bottom: 22px;
+
+    text-align: center;
+}
+
+.section-heading::before,
+.section-heading::after {
+    content: "•";
+
+    color: #f2c94c;
+    font-size: 20px;
 }
 
 .section-heading h2 {
-    font-size: 27px;
+    font-size: 25px;
+    color: #4a3020;
 }
 
 .info-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+    gap: 16px;
 }
 
 .info-card {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 14px;
 
-    padding: 23px;
+    padding: 20px;
 
-    background: white;
-    border-radius: 22px;
+    background: #ffffff;
 
     border: 2px solid #f5df8a;
+    border-radius: 22px;
 
     box-shadow: 0 10px 25px rgba(88, 62, 30, 0.06);
+
+    transition: 0.2s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(88, 62, 30, 0.10);
 }
 
 .info-icon {
@@ -357,54 +442,82 @@ a {
     flex-shrink: 0;
 
     border-radius: 15px;
+
     background: #fff3bd;
 
-    font-size: 23px;
+    font-size: 22px;
 }
 
 .card-label {
-    font-size: 10px;
+    font-size: 9px;
     letter-spacing: 1.5px;
+
     color: #a27619;
     font-weight: bold;
-    margin-bottom: 5px;
+
+    margin-bottom: 4px;
 }
 
 .info-card h3 {
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.4;
+
     overflow-wrap: anywhere;
 }
 
-
-/* =========================================
-   PROFILE HEADER
-========================================= */
-
 .profile-header {
-    display: flex;
+    position: relative;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: 220px 1fr;
     align-items: center;
-    gap: 35px;
+    gap: 30px;
 
-    padding: 42px;
+    padding: 38px;
 
-    background: #fff;
+    background: #ffffff;
+
     border: 3px solid #f2c94c;
     border-radius: 34px;
 
     box-shadow: 0 18px 40px rgba(88, 62, 30, 0.10);
 
-    margin-bottom: 25px;
+    margin-bottom: 24px;
+}
+
+.profile-header::before {
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    border-radius: 50%;
+
+    background: #fff3bd;
+
+    right: -55px;
+    top: -65px;
+
+    z-index: 0;
 }
 
 .profile-character {
-    flex-shrink: 0;
-    width: 190px;
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+
     text-align: center;
+
+    padding: 8px;
 }
 
 .character-hat {
     font-size: 50px;
+
     margin-bottom: -12px;
 }
 
@@ -421,76 +534,95 @@ a {
     border-radius: 50%;
 
     background: #f8ca45;
+
     border: 4px solid #c89427;
 
     font-size: 25px;
+
+    box-shadow: 0 8px 20px rgba(88, 62, 30, 0.10);
 }
 
 .character-pudding {
-    font-size: 85px;
-    margin-top: -20px;
+    font-size: 82px;
+    line-height: 0.9;
+
+    margin-top: -19px;
+}
+
+.profile-title {
+    position: relative;
+    z-index: 2;
 }
 
 .profile-title h1 {
     font-size: clamp(38px, 6vw, 62px);
-    line-height: 1;
-    margin-bottom: 12px;
+    line-height: 0.98;
+
+    color: #3d2b1f;
+
+    margin-bottom: 10px;
 }
 
 .profile-title h2 {
-    font-size: 25px;
+    font-size: 23px;
+
+    color: #5b4030;
+
     margin-bottom: 6px;
 }
 
 .profile-title > p:last-child {
     color: #765f50;
+    font-size: 14px;
+    line-height: 1.6;
 }
-
-
-/* =========================================
-   PROFILE TWO-COLUMN LAYOUT
-========================================= */
 
 .profile-layout {
     display: grid;
-    grid-template-columns: 1.65fr 0.85fr;
-    gap: 22px;
+
+    grid-template-columns: minmax(0, 1.55fr) minmax(270px, 0.85fr);
+
+    gap: 20px;
+
     align-items: start;
 }
 
 .profile-main {
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 20px;
 }
 
 .profile-sidebar {
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 20px;
+
     position: sticky;
-    top: 20px;
+    top: 18px;
 }
 
 .profile-card,
 .identity-card,
 .contact-card {
-    background: white;
-    border-radius: 25px;
+    background: #ffffff;
+
     border: 2px solid #f5df8a;
+    border-radius: 25px;
 
     box-shadow: 0 12px 28px rgba(88, 62, 30, 0.07);
 }
 
 .profile-card {
-    padding: 28px;
+    padding: 27px;
 }
 
 .card-heading {
     display: flex;
     align-items: center;
-    gap: 14px;
-    margin-bottom: 20px;
+    gap: 13px;
+
+    margin-bottom: 18px;
 }
 
 .heading-icon {
@@ -498,53 +630,60 @@ a {
     align-items: center;
     justify-content: center;
 
-    width: 52px;
-    height: 52px;
+    width: 50px;
+    height: 50px;
+
+    flex-shrink: 0;
 
     background: #fff3bd;
     border-radius: 17px;
 
-    font-size: 24px;
+    font-size: 23px;
 }
 
 .card-heading p {
-    font-size: 10px;
+    font-size: 9px;
     letter-spacing: 1.5px;
+
     color: #a27619;
     font-weight: bold;
-    margin-bottom: 4px;
+
+    margin-bottom: 3px;
 }
 
 .card-heading h2 {
-    font-size: 24px;
+    font-size: 23px;
+    color: #4a3020;
 }
 
 .profile-description {
     color: #675247;
-    line-height: 1.8;
+
+    line-height: 1.85;
     font-size: 15px;
 }
-
-
-/* =========================================
-   TAGS
-========================================= */
 
 .tag-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 9px;
 }
 
 .profile-tag {
     display: inline-block;
 
-    padding: 10px 14px;
+    padding: 9px 13px;
 
-    border-radius: 16px;
+    border-radius: 15px;
 
-    font-size: 13px;
+    font-size: 12px;
     font-weight: bold;
+
+    transition: 0.2s ease;
+}
+
+.profile-tag:hover {
+    transform: translateY(-2px);
 }
 
 .hobby-tag {
@@ -557,13 +696,8 @@ a {
     color: #573d1c;
 }
 
-
-/* =========================================
-   IDENTITY CARD
-========================================= */
-
 .identity-card {
-    padding: 25px;
+    padding: 24px;
 }
 
 .identity-top {
@@ -571,19 +705,20 @@ a {
     align-items: center;
     gap: 10px;
 
-    padding-bottom: 18px;
-    margin-bottom: 8px;
+    padding-bottom: 16px;
+    margin-bottom: 5px;
 
     border-bottom: 2px dashed #ecd989;
 }
 
 .identity-top span {
-    font-size: 25px;
+    font-size: 24px;
 }
 
 .identity-top p {
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 2px;
+
     font-weight: bold;
     color: #8a671d;
 }
@@ -591,9 +726,9 @@ a {
 .identity-item {
     display: flex;
     align-items: flex-start;
-    gap: 13px;
+    gap: 12px;
 
-    padding: 14px 0;
+    padding: 13px 0;
 
     border-bottom: 1px solid #f3e9c3;
 }
@@ -603,34 +738,38 @@ a {
 }
 
 .identity-item > span {
-    font-size: 20px;
+    font-size: 19px;
+    flex-shrink: 0;
 }
 
 .identity-item small {
     display: block;
-    font-size: 9px;
+
+    font-size: 8px;
     letter-spacing: 1.2px;
+
     color: #a27619;
     font-weight: bold;
-    margin-bottom: 4px;
+
+    margin-bottom: 3px;
 }
 
 .identity-item strong {
     display: block;
+
     font-size: 13px;
-    line-height: 1.4;
+    line-height: 1.45;
+
     overflow-wrap: anywhere;
 }
 
-
-/* =========================================
-   CONTACT CARD
-========================================= */
-
 .contact-card {
-    padding: 25px;
+    padding: 24px;
+
     background: #4a3020;
-    color: white;
+    color: #ffffff;
+
+    border-color: #4a3020;
 }
 
 .contact-title {
@@ -638,15 +777,15 @@ a {
     align-items: center;
     gap: 10px;
 
-    margin-bottom: 18px;
+    margin-bottom: 15px;
 }
 
 .contact-title span {
-    font-size: 25px;
+    font-size: 24px;
 }
 
 .contact-title h2 {
-    font-size: 21px;
+    font-size: 20px;
 }
 
 .contact-item {
@@ -654,7 +793,7 @@ a {
     align-items: flex-start;
     gap: 10px;
 
-    padding: 11px 0;
+    padding: 10px 0;
 
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
@@ -664,14 +803,17 @@ a {
 }
 
 .contact-item span {
-    font-size: 17px;
+    font-size: 16px;
+    flex-shrink: 0;
 }
 
 .contact-item p,
 .contact-item a {
     color: #fff9df;
-    font-size: 13px;
+
+    font-size: 12px;
     line-height: 1.5;
+
     overflow-wrap: anywhere;
 }
 
@@ -679,37 +821,26 @@ a {
     text-decoration: underline;
 }
 
-
-/* =========================================
-   FOOTER
-========================================= */
-
 .student-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-
-    padding: 35px 0 10px;
-
-    color: #8a715f;
-    font-size: 12px;
+    display: none !important;
 }
-
-
-/* =========================================
-   RESPONSIVE DESIGN
-========================================= */
 
 @media (max-width: 850px) {
 
     .hero-card {
         grid-template-columns: 1fr;
-        padding: 40px 30px;
+        gap: 20px;
+
+        padding: 42px 32px;
+    }
+
+    .hero-content {
+        max-width: 100%;
     }
 
     .hero-pudding {
-        margin-top: 25px;
+        min-height: 280px;
+        margin-top: 5px;
     }
 
     .info-grid {
@@ -725,13 +856,20 @@ a {
     }
 
     .profile-header {
-        flex-direction: column;
+        grid-template-columns: 1fr;
+
         text-align: center;
+
+        padding: 32px 25px;
     }
 
     .profile-header .yellow-line {
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .profile-character {
+        width: 100%;
     }
 }
 
@@ -740,35 +878,96 @@ a {
     .home-wrapper,
     .profile-wrapper {
         width: 94%;
+        padding-top: 15px;
     }
 
     .student-nav {
-        padding: 12px 14px;
+        padding: 11px 13px;
+        margin-bottom: 16px;
     }
 
     .nav-brand span {
         display: none;
     }
 
+    .nav-profile {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+
     .hero-card {
-        padding: 35px 22px;
+        min-height: auto;
+
+        padding: 34px 22px;
+
+        border-radius: 28px;
+    }
+
+    .hero-card::before {
+        width: 210px;
+        height: 210px;
+
+        right: -80px;
+        top: -70px;
     }
 
     .hero-content h1 {
         font-size: 48px;
     }
 
+    .hero-description {
+        font-size: 14px;
+    }
+
+    .student-badges span {
+        font-size: 11px;
+    }
+
+    .hero-pudding {
+        min-height: 230px;
+    }
+
+    .pudding-face {
+        width: 145px;
+        height: 90px;
+    }
+
+    .pudding-body {
+        font-size: 78px;
+    }
+
+    .quick-info {
+        padding-top: 30px;
+    }
+
+    .section-heading h2 {
+        font-size: 21px;
+    }
+
     .profile-header {
-        padding: 30px 20px;
+        padding: 28px 18px;
+        border-radius: 27px;
     }
 
     .profile-title h1 {
         font-size: 42px;
     }
 
+    .profile-title h2 {
+        font-size: 20px;
+    }
+
     .profile-card,
     .identity-card,
     .contact-card {
-        padding: 21px;
+        padding: 20px;
+    }
+
+    .card-heading h2 {
+        font-size: 20px;
+    }
+
+    .profile-description {
+        font-size: 14px;
     }
 }
