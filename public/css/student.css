@@ -1,280 +1,774 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    margin: 0;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background: #fff9df;
+    color: #3d2b1f;
     min-height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #fff8dc;
-    color: #4b3525;
-    position: relative;
     overflow-x: hidden;
 }
 
-/* Decorative background circles */
-body::before,
-body::after {
-    content: "";
-    position: fixed;
-    border-radius: 50%;
-    z-index: -1;
-}
-
-body::before {
-    width: 280px;
-    height: 280px;
-    background: #ffe58a;
-    top: -100px;
-    left: -90px;
-}
-
-body::after {
-    width: 350px;
-    height: 350px;
-    background: #fff0b5;
-    bottom: -150px;
-    right: -120px;
-}
-
-/* Decorative floating elements */
-.decor {
-    position: fixed;
-    font-size: 24px;
-    opacity: 0.8;
-    z-index: -1;
-}
-
-.decor.one {
-    top: 15%;
-    left: 8%;
-}
-
-.decor.two {
-    top: 25%;
-    right: 9%;
-}
-
-.decor.three {
-    bottom: 20%;
-    left: 12%;
-}
-
-.decor.four {
-    bottom: 12%;
-    right: 10%;
-}
-
-/* Main container */
-.container {
-    width: 90%;
-    max-width: 850px;
-    margin: 50px auto;
-}
-
-/* Main card */
-.card {
-    position: relative;
-    background: #ffffff;
-    border: 3px solid #e8bd45;
-    border-radius: 28px;
-    padding: 45px;
-    box-shadow: 0 12px 30px rgba(75, 53, 37, 0.12);
-    overflow: hidden;
-}
-
-/* Top decorative strip */
-.card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 12px;
-    background: #f4c542;
-}
-
-/* Cute corner decoration */
-.card::after {
-    content: "✦";
-    position: absolute;
-    top: 25px;
-    right: 30px;
-    font-size: 25px;
-    color: #e8bd45;
-}
-
-/* Pompompurin-style icon */
-.pudding {
-    width: 85px;
-    height: 85px;
-    margin: 5px auto 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff0b5;
-    border: 3px solid #e8bd45;
-    border-radius: 50%;
-    font-size: 45px;
-    box-shadow: 0 5px 12px rgba(75, 53, 37, 0.1);
-}
-
-/* Headings */
-h1 {
-    margin: 0;
-    text-align: center;
-    color: #4b3525;
-    font-size: 34px;
-    letter-spacing: 0.5px;
-}
-
-.subtitle {
-    text-align: center;
-    color: #806b58;
-    font-size: 17px;
-    line-height: 1.6;
-    margin: 15px auto 25px;
-    max-width: 600px;
-}
-
-/* Yellow accent */
-.accent {
-    width: 90px;
-    height: 6px;
-    background: #f4c542;
-    border-radius: 20px;
-    margin: 16px auto 30px;
-}
-
-/* Welcome message */
-.welcome-box {
-    background: #fff8dc;
-    border: 2px dashed #e8bd45;
-    border-radius: 18px;
-    padding: 20px;
-    text-align: center;
-    margin: 25px 0;
-}
-
-/* Decorations inside boxes */
-.mini-decor {
-    font-size: 20px;
-    letter-spacing: 8px;
-    margin-bottom: 10px;
-}
-
-/* Navigation */
-nav {
-    text-align: center;
-    margin-top: 30px;
-}
-
-nav a {
-    display: inline-block;
-    padding: 12px 22px;
-    margin: 5px;
-    border-radius: 14px;
+a {
     text-decoration: none;
-    font-weight: bold;
-    color: #ffffff;
-    background: #6b4933;
-    border: 2px solid #6b4933;
-    transition: all 0.2s ease;
 }
 
-nav a:hover {
-    background: #f4c542;
-    color: #4b3525;
-    border-color: #e8bd45;
-    transform: translateY(-2px);
+
+/* =========================================
+   BACKGROUND DECORATIONS
+========================================= */
+
+.pudding-bg,
+.profile-background {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
 }
 
-/* Profile information */
-.profile-box {
-    background: #fffdf5;
-    border: 2px solid #f0d88b;
-    border-radius: 20px;
-    padding: 8px 22px;
+.decor,
+.profile-decor {
+    position: absolute;
+    opacity: 0.45;
+    font-size: 32px;
 }
 
-.info {
+.decor-1 {
+    top: 12%;
+    left: 7%;
+}
+
+.decor-2 {
+    top: 25%;
+    right: 8%;
+}
+
+.decor-3 {
+    bottom: 18%;
+    left: 10%;
+}
+
+.decor-4 {
+    bottom: 8%;
+    right: 12%;
+}
+
+.decor-5 {
+    top: 8%;
+    right: 30%;
+}
+
+.decor-a {
+    top: 13%;
+    left: 5%;
+}
+
+.decor-b {
+    top: 30%;
+    right: 5%;
+}
+
+.decor-c {
+    bottom: 15%;
+    left: 6%;
+}
+
+.decor-d {
+    bottom: 7%;
+    right: 8%;
+}
+
+
+/* =========================================
+   GENERAL LAYOUT
+========================================= */
+
+.home-wrapper,
+.profile-wrapper {
+    position: relative;
+    z-index: 1;
+    width: min(1120px, 92%);
+    margin: auto;
+    padding: 25px 0 45px;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.student-nav {
     display: flex;
     align-items: center;
-    padding: 17px 8px;
-    border-bottom: 1px solid #f0dfb5;
+    justify-content: space-between;
+    padding: 14px 22px;
+    margin-bottom: 28px;
+
+    background: rgba(255, 255, 255, 0.88);
+    border: 2px solid #f2c94c;
+    border-radius: 20px;
+
+    box-shadow: 0 8px 20px rgba(94, 67, 39, 0.08);
 }
 
-.info:last-child {
-    border-bottom: none;
-}
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
 
-.label {
-    width: 160px;
+    font-size: 17px;
     font-weight: bold;
-    color: #8a641d;
+    color: #4a3020;
 }
 
-.info span:last-child {
-    color: #4b3525;
-}
+.nav-profile {
+    padding: 9px 16px;
+    border-radius: 14px;
 
-/* Small profile decoration */
-.profile-title {
-    text-align: center;
-    color: #8a641d;
+    background: #f2c94c;
+    color: #3d2b1f;
+
     font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-weight: bold;
+
+    transition: 0.2s ease;
+}
+
+.nav-profile:hover {
+    transform: translateY(-2px);
+    background: #e8b92f;
+}
+
+
+/* =========================================
+   HOME HERO
+========================================= */
+
+.hero-card {
+    display: grid;
+    grid-template-columns: 1.35fr 0.65fr;
+    align-items: center;
+
+    position: relative;
+    overflow: hidden;
+
+    min-height: 440px;
+    padding: 55px;
+
+    background: #fff;
+    border: 3px solid #f2c94c;
+    border-radius: 36px;
+
+    box-shadow: 0 20px 45px rgba(88, 62, 30, 0.12);
+}
+
+.hero-card::before {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+
+    background: #fff3bd;
+
+    right: -80px;
+    top: -80px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.small-label,
+.profile-kicker {
+    letter-spacing: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #a27619;
+    margin-bottom: 12px;
+}
+
+.hero-content h1 {
+    font-size: clamp(42px, 7vw, 76px);
+    line-height: 0.95;
+    color: #3d2b1f;
     margin-bottom: 18px;
 }
 
-/* Footer */
-.footer {
-    text-align: center;
-    margin-top: 25px;
-    color: #9b856f;
+.yellow-line {
+    width: 90px;
+    height: 7px;
+    border-radius: 20px;
+    background: #f2c94c;
+    margin-bottom: 22px;
+}
+
+.hero-description {
+    max-width: 600px;
+    color: #725b4b;
+    font-size: 17px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.student-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-bottom: 28px;
+}
+
+.student-badges span {
+    padding: 9px 13px;
+    border-radius: 20px;
+
+    background: #fff3bd;
+    color: #684d21;
+
     font-size: 13px;
+    font-weight: bold;
 }
 
-.footer span {
-    color: #d49d17;
+.main-button {
+    display: inline-block;
+    padding: 13px 20px;
+
+    border-radius: 16px;
+
+    background: #4a3020;
+    color: white;
+
+    font-weight: bold;
+
+    transition: 0.2s ease;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
+.main-button:hover {
+    transform: translateY(-3px);
+    background: #6b4930;
+}
 
-    .container {
-        width: 92%;
-        margin: 30px auto;
+
+/* =========================================
+   PUDDING CHARACTER
+========================================= */
+
+.hero-pudding {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pudding-character {
+    text-align: center;
+    transform: rotate(3deg);
+}
+
+.pudding-hat {
+    font-size: 58px;
+    margin-bottom: -12px;
+}
+
+.pudding-face {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 170px;
+    height: 105px;
+
+    margin: auto;
+
+    background: #f8ca45;
+
+    border-radius: 55% 55% 45% 45%;
+
+    border: 4px solid #c89427;
+}
+
+.pudding-face span {
+    font-size: 30px;
+    color: #4a3020;
+}
+
+.pudding-body {
+    font-size: 100px;
+    margin-top: -25px;
+}
+
+
+/* =========================================
+   HOME INFORMATION
+========================================= */
+
+.quick-info {
+    padding: 65px 0 20px;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    margin-bottom: 28px;
+}
+
+.section-heading h2 {
+    font-size: 27px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.info-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 23px;
+
+    background: white;
+    border-radius: 22px;
+
+    border: 2px solid #f5df8a;
+
+    box-shadow: 0 10px 25px rgba(88, 62, 30, 0.06);
+}
+
+.info-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    border-radius: 15px;
+    background: #fff3bd;
+
+    font-size: 23px;
+}
+
+.card-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: #a27619;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.info-card h3 {
+    font-size: 15px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================
+   PROFILE HEADER
+========================================= */
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+
+    padding: 42px;
+
+    background: #fff;
+    border: 3px solid #f2c94c;
+    border-radius: 34px;
+
+    box-shadow: 0 18px 40px rgba(88, 62, 30, 0.10);
+
+    margin-bottom: 25px;
+}
+
+.profile-character {
+    flex-shrink: 0;
+    width: 190px;
+    text-align: center;
+}
+
+.character-hat {
+    font-size: 50px;
+    margin-bottom: -12px;
+}
+
+.character-face {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 145px;
+    height: 90px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    background: #f8ca45;
+    border: 4px solid #c89427;
+
+    font-size: 25px;
+}
+
+.character-pudding {
+    font-size: 85px;
+    margin-top: -20px;
+}
+
+.profile-title h1 {
+    font-size: clamp(38px, 6vw, 62px);
+    line-height: 1;
+    margin-bottom: 12px;
+}
+
+.profile-title h2 {
+    font-size: 25px;
+    margin-bottom: 6px;
+}
+
+.profile-title > p:last-child {
+    color: #765f50;
+}
+
+
+/* =========================================
+   PROFILE TWO-COLUMN LAYOUT
+========================================= */
+
+.profile-layout {
+    display: grid;
+    grid-template-columns: 1.65fr 0.85fr;
+    gap: 22px;
+    align-items: start;
+}
+
+.profile-main {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    position: sticky;
+    top: 20px;
+}
+
+.profile-card,
+.identity-card,
+.contact-card {
+    background: white;
+    border-radius: 25px;
+    border: 2px solid #f5df8a;
+
+    box-shadow: 0 12px 28px rgba(88, 62, 30, 0.07);
+}
+
+.profile-card {
+    padding: 28px;
+}
+
+.card-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.heading-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+
+    background: #fff3bd;
+    border-radius: 17px;
+
+    font-size: 24px;
+}
+
+.card-heading p {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: #a27619;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.card-heading h2 {
+    font-size: 24px;
+}
+
+.profile-description {
+    color: #675247;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+
+/* =========================================
+   TAGS
+========================================= */
+
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.profile-tag {
+    display: inline-block;
+
+    padding: 10px 14px;
+
+    border-radius: 16px;
+
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.hobby-tag {
+    background: #fff3bd;
+    color: #684d21;
+}
+
+.skill-tag {
+    background: #f8e5a0;
+    color: #573d1c;
+}
+
+
+/* =========================================
+   IDENTITY CARD
+========================================= */
+
+.identity-card {
+    padding: 25px;
+}
+
+.identity-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding-bottom: 18px;
+    margin-bottom: 8px;
+
+    border-bottom: 2px dashed #ecd989;
+}
+
+.identity-top span {
+    font-size: 25px;
+}
+
+.identity-top p {
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: #8a671d;
+}
+
+.identity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #f3e9c3;
+}
+
+.identity-item:last-child {
+    border-bottom: none;
+}
+
+.identity-item > span {
+    font-size: 20px;
+}
+
+.identity-item small {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+    color: #a27619;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.identity-item strong {
+    display: block;
+    font-size: 13px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================
+   CONTACT CARD
+========================================= */
+
+.contact-card {
+    padding: 25px;
+    background: #4a3020;
+    color: white;
+}
+
+.contact-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 18px;
+}
+
+.contact-title span {
+    font-size: 25px;
+}
+
+.contact-title h2 {
+    font-size: 21px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    padding: 11px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.contact-item:last-child {
+    border-bottom: none;
+}
+
+.contact-item span {
+    font-size: 17px;
+}
+
+.contact-item p,
+.contact-item a {
+    color: #fff9df;
+    font-size: 13px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.student-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    padding: 35px 0 10px;
+
+    color: #8a715f;
+    font-size: 12px;
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 850px) {
+
+    .hero-card {
+        grid-template-columns: 1fr;
+        padding: 40px 30px;
     }
 
-    .card {
-        padding: 30px 20px;
-        border-radius: 22px;
+    .hero-pudding {
+        margin-top: 25px;
     }
 
-    h1 {
-        font-size: 27px;
+    .info-grid {
+        grid-template-columns: 1fr;
     }
 
-    .info {
-        display: block;
-        padding: 14px 5px;
+    .profile-layout {
+        grid-template-columns: 1fr;
     }
 
-    .label {
-        display: block;
-        width: auto;
-        margin-bottom: 5px;
+    .profile-sidebar {
+        position: static;
     }
 
-    nav a {
-        width: 100%;
-        margin: 5px 0;
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
     }
 
-    .decor {
+    .profile-header .yellow-line {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .home-wrapper,
+    .profile-wrapper {
+        width: 94%;
+    }
+
+    .student-nav {
+        padding: 12px 14px;
+    }
+
+    .nav-brand span {
         display: none;
     }
-    
+
+    .hero-card {
+        padding: 35px 22px;
+    }
+
+    .hero-content h1 {
+        font-size: 48px;
+    }
+
+    .profile-header {
+        padding: 30px 20px;
+    }
+
+    .profile-title h1 {
+        font-size: 42px;
+    }
+
+    .profile-card,
+    .identity-card,
+    .contact-card {
+        padding: 21px;
+    }
 }
