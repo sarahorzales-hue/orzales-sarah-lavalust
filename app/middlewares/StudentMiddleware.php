@@ -6,12 +6,12 @@ class StudentMiddleware
 {
     public function handle(Closure $next)
     {
-        // Start the PHP session if it is not already active
+       
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
 
-        // Check if student access is allowed
+    
         if (!isset($_SESSION['student_access']) || $_SESSION['student_access'] !== true) {
             header('Location: /student');
             exit;
