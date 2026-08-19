@@ -6,7 +6,7 @@
 
     <title>My Student Portal</title>
 
-    <link rel="stylesheet" href="/LavaLust/public/css/student.css">
+    <link rel="stylesheet" href="/css/student.css">
 </head>
 
 <body>
