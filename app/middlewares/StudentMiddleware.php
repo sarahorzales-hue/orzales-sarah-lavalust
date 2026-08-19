@@ -13,7 +13,7 @@ class StudentMiddleware
 
         // Check if student access is allowed
         if (!isset($_SESSION['student_access']) || $_SESSION['student_access'] !== true) {
-            header('Location: /LavaLust/student');
+            header('Location: /student');
             exit;
         }
 
