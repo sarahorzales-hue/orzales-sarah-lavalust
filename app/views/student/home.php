@@ -46,8 +46,8 @@
         </div>
 
         <nav>
-            <a href="/LavaLust/student">Home</a>
-            <a href="/LavaLust/student/profile">Student Profile</a>
+            <a href="/student">Home</a>
+            <a href="/student/profile">Student Profile</a>
         </nav>
 
        

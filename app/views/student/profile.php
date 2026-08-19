@@ -6,7 +6,7 @@
 
     <title>Student Profile</title>
 
-    <link rel="stylesheet" href="/LavaLust/public/css/student.css">
+    <link rel="stylesheet" href="/css/student.css">
 </head>
 
 <body>
@@ -66,7 +66,7 @@
         </div>
 
         <nav>
-            <a href="/LavaLust/student">← Back to Home</a>
+            <a href="/student">← Back to Home</a>
         </nav>
 
         
