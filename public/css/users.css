@@ -34,7 +34,6 @@ body {
     margin: 0 0 6px;
     font-size: 26px;
     font-weight: 600;
-    letter-spacing: 0.5px;
 }
 
 .page-header p {
@@ -118,19 +117,11 @@ tbody tr:hover {
     margin-right: 0;
 }
 
-.actions a:hover {
-    text-decoration: none;
-}
-
 .empty {
     padding: 30px;
     border: 1px solid #cccccc;
     text-align: center;
     color: #555555;
-}
-
-form {
-    width: 100%;
 }
 
 .form-group {
@@ -160,10 +151,6 @@ form {
     border-color: #111111;
 }
 
-.form-group input::placeholder {
-    color: #888888;
-}
-
 .form-actions {
     display: flex;
     align-items: center;
@@ -180,18 +167,10 @@ form {
     font-size: 14px;
 }
 
-.form-actions button:hover {
-    background: #333333;
-}
-
 .form-actions a {
     color: #111111;
     text-decoration: none;
     font-size: 14px;
-}
-
-.form-actions a:hover {
-    text-decoration: underline;
 }
 
 .error {
