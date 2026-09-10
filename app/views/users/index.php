@@ -6,7 +6,7 @@
 
     <title>Student User Management</title>
 
-    <link rel="stylesheet" href="<?= base_url('public/css/users.css'); ?>">
+    <link rel="stylesheet" href="/css/users.css">
 </head>
 
 <body>
