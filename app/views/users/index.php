@@ -63,28 +63,28 @@
                         <tr>
 
                             <td>
-                                <?= htmlspecialchars($user['id']); ?>
-                            </td>
+    <?= htmlspecialchars($user['id'] ?? ''); ?>
+</td>
 
-                            <td>
-                                <?= htmlspecialchars($user['firstname']); ?>
-                            </td>
+<td>
+    <?= htmlspecialchars($user['firstname'] ?? ''); ?>
+</td>
 
-                            <td>
-                                <?= htmlspecialchars($user['lastname']); ?>
-                            </td>
+<td>
+    <?= htmlspecialchars($user['lastname'] ?? ''); ?>
+</td>
 
-                            <td>
-                                <?= htmlspecialchars($user['year']); ?>
-                            </td>
+<td>
+    <?= htmlspecialchars($user['year'] ?? ''); ?>
+</td>
 
-                            <td>
-                                <?= htmlspecialchars($user['course']); ?>
-                            </td>
+<td>
+    <?= htmlspecialchars($user['course'] ?? ''); ?>
+</td>
 
-                            <td>
-                                <?= htmlspecialchars($user['username']); ?>
-                            </td>
+<td>
+    <?= htmlspecialchars($user['username'] ?? ''); ?>
+</td>
 
                             <td class="actions">
 
