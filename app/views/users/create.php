@@ -1,106 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Create Student User</title>
 
-    <link rel="stylesheet"
-          href="<?= base_url('css/users.css'); ?>">
-
+    <link rel="stylesheet" href="<?= base_url('public/css/users.css'); ?>">
 </head>
 
 <body>
 
-<div class="form-page">
+<div class="form-container">
 
-    <div class="form-card">
-
-        <div class="form-header">
-
+    <div class="page-header">
+        <div>
             <h1>Create Student User</h1>
+            <p>Add a new student account.</p>
+        </div>
+    </div>
 
-            <p>
-                Add a new student account.
-            </p>
+    <?php if (!empty($error)): ?>
 
+        <div class="error">
+            <?= htmlspecialchars($error); ?>
         </div>
 
-        <?php $LAVA = lava_instance(); ?>
+    <?php endif; ?>
 
-        <?php if (!empty($error)): ?>
+    <?php $LAVA = lava_instance(); ?>
 
-            <div class="alert error">
-                <?= htmlspecialchars($error); ?>
-            </div>
+    <div class="validation-errors">
+        <?= $LAVA->form_validation->errors(); ?>
+    </div>
 
-        <?php endif; ?>
+    <form method="POST">
 
-        <?php $errors = $LAVA->form_validation->errors(); ?>
+        <div class="form-group">
+            <label>First Name</label>
+            <input
+                type="text"
+                name="firstname"
+                value="<?= htmlspecialchars($_POST['firstname'] ?? ''); ?>"
+            >
+        </div>
 
-        <?php if ($errors): ?>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input
+                type="text"
+                name="lastname"
+                value="<?= htmlspecialchars($_POST['lastname'] ?? ''); ?>"
+            >
+        </div>
 
-            <div class="alert error">
-                <?= $errors; ?>
-            </div>
+        <div class="form-group">
+            <label>Year</label>
 
-        <?php endif; ?>
+            <select name="year">
+                <option value="">Select Year</option>
+                <option value="1st" <?= (($_POST['year'] ?? '') === '1st') ? 'selected' : ''; ?>>1st Year</option>
+                <option value="2nd" <?= (($_POST['year'] ?? '') === '2nd') ? 'selected' : ''; ?>>2nd Year</option>
+                <option value="3rd" <?= (($_POST['year'] ?? '') === '3rd') ? 'selected' : ''; ?>>3rd Year</option>
+                <option value="4th" <?= (($_POST['year'] ?? '') === '4th') ? 'selected' : ''; ?>>4th Year</option>
+            </select>
+        </div>
 
-        <form
-            method="POST"
-            action="<?= base_url('users/create'); ?>">
+        <div class="form-group">
+            <label>Course</label>
+            <input
+                type="text"
+                name="course"
+                value="<?= htmlspecialchars($_POST['course'] ?? ''); ?>"
+                placeholder="e.g. BS Information Technology"
+            >
+        </div>
 
-            <div class="form-group">
+        <div class="form-group">
+            <label>Username</label>
+            <input
+                type="text"
+                name="username"
+                value="<?= htmlspecialchars($_POST['username'] ?? ''); ?>"
+            >
+        </div>
 
-                <label>Username</label>
+        <div class="form-group">
+            <label>Password</label>
+            <input
+                type="password"
+                name="password"
+            >
+        </div>
 
-                <input
-                    type="text"
-                    name="username"
-                    placeholder="Enter username"
-                    value="<?= htmlspecialchars($_POST['username'] ?? ''); ?>">
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input
+                type="password"
+                name="confirm_password"
+            >
+        </div>
 
-            </div>
+        <div class="form-actions">
 
-            <div class="form-group">
-
-                <label>Password</label>
-
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Enter password">
-
-            </div>
-
-            <div class="form-group">
-
-                <label>Confirm Password</label>
-
-                <input
-                    type="password"
-                    name="confirm_password"
-                    placeholder="Confirm password">
-
-            </div>
-
-            <button
-                type="submit"
-                class="btn btn-primary full">
+            <button type="submit">
                 Create User
             </button>
 
-        </form>
+            <a href="<?= base_url('users'); ?>">
+                Back to Users
+            </a>
 
-        <a
-            href="<?= base_url('users'); ?>"
-            class="back-link">
-            ← Back to Student Users
-        </a>
+        </div>
 
-    </div>
+    </form>
 
 </div>
 

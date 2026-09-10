@@ -28,13 +28,29 @@ class UsersController extends Controller
     {
         if ($this->form_validation->submitted()) {
 
-            if ($this->form_validation->validate(
+            $valid = $this->form_validation->validate(
                 [
+                    'firstname|First Name' => 'required',
+                    'lastname|Last Name' => 'required',
+                    'year|Year' => 'required',
+                    'course|Course' => 'required',
                     'username|Username' => 'required|min_length[5]',
                     'password|Password' => 'required|min_length[8]',
                     'confirm_password|Confirm Password' => 'required|matches[password]'
                 ],
                 [
+                    'firstname' => [
+                        'required' => 'First name is required.'
+                    ],
+                    'lastname' => [
+                        'required' => 'Last name is required.'
+                    ],
+                    'year' => [
+                        'required' => 'Year is required.'
+                    ],
+                    'course' => [
+                        'required' => 'Course is required.'
+                    ],
                     'username' => [
                         'required' => 'Username is required.',
                         'min_length' => 'Username requires 5 characters long.'
@@ -48,7 +64,9 @@ class UsersController extends Controller
                         'matches' => 'Passwords do not match.'
                     ]
                 ]
-            )) {
+            );
+
+            if ($valid) {
 
                 $username = $this->io->post('username');
 
@@ -73,6 +91,11 @@ class UsersController extends Controller
                 );
 
                 $this->UsersModel->insert([
+                    'firstname' => $this->io->post('firstname'),
+                    'lastname' => $this->io->post('lastname'),
+                    'year' => $this->io->post('year'),
+                    'course' => $this->io->post('course'),
+                    'email' => '',
                     'username' => $username,
                     'password' => $password
                 ]);
@@ -99,15 +122,27 @@ class UsersController extends Controller
 
         if ($this->form_validation->submitted()) {
 
-            $username = $this->io->post('username');
-            $password = $this->io->post('password');
-            $confirm_password = $this->io->post('confirm_password');
-
             $valid = $this->form_validation->validate(
                 [
+                    'firstname|First Name' => 'required',
+                    'lastname|Last Name' => 'required',
+                    'year|Year' => 'required',
+                    'course|Course' => 'required',
                     'username|Username' => 'required|min_length[5]'
                 ],
                 [
+                    'firstname' => [
+                        'required' => 'First name is required.'
+                    ],
+                    'lastname' => [
+                        'required' => 'Last name is required.'
+                    ],
+                    'year' => [
+                        'required' => 'Year is required.'
+                    ],
+                    'course' => [
+                        'required' => 'Course is required.'
+                    ],
                     'username' => [
                         'required' => 'Username is required.',
                         'min_length' => 'Username requires 5 characters long.'
@@ -115,6 +150,10 @@ class UsersController extends Controller
                 ]
             );
 
+            $password = $this->io->post('password');
+            $confirm_password = $this->io->post('confirm_password');
+
+            // Only validate password if the user entered a new password
             if ($valid && $password !== '') {
 
                 $valid = $this->form_validation->validate(
@@ -135,6 +174,8 @@ class UsersController extends Controller
 
             if ($valid) {
 
+                $username = $this->io->post('username');
+
                 $existing_user = $this->UsersModel->find_by(
                     'username',
                     $username
@@ -147,6 +188,10 @@ class UsersController extends Controller
                 } else {
 
                     $update_data = [
+                        'firstname' => $this->io->post('firstname'),
+                        'lastname' => $this->io->post('lastname'),
+                        'year' => $this->io->post('year'),
+                        'course' => $this->io->post('course'),
                         'username' => $username
                     ];
 
@@ -157,7 +202,10 @@ class UsersController extends Controller
                         );
                     }
 
-                    $this->UsersModel->update($id, $update_data);
+                    $this->UsersModel->update(
+                        $id,
+                        $update_data
+                    );
 
                     redirect('/users');
                     return;

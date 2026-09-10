@@ -7,6 +7,11 @@ class UsersModel extends Model
     protected $primary_key = 'id';
 
     protected $fillable = [
+        'firstname',
+        'lastname',
+        'year',
+        'course',
+        'email',
         'username',
         'password'
     ];
@@ -16,4 +21,9 @@ class UsersModel extends Model
     ];
 
     protected $has_soft_delete = true;
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
 }

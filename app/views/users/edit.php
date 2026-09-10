@@ -1,105 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Edit Student User</title>
 
-    <link rel="stylesheet"
-          href="<?= base_url('css/users.css'); ?>">
-
+    <link rel="stylesheet" href="<?= base_url('public/css/users.css'); ?>">
 </head>
 
 <body>
 
-<div class="form-page">
+<div class="form-container">
 
-    <div class="form-card">
-
-        <div class="form-header">
-
+    <div class="page-header">
+        <div>
             <h1>Edit Student User</h1>
+            <p>Update student account information.</p>
+        </div>
+    </div>
 
-            <p>
-                Update the account information.
-            </p>
+    <?php if (!empty($error)): ?>
 
+        <div class="error">
+            <?= htmlspecialchars($error); ?>
         </div>
 
-        <?php $LAVA = lava_instance(); ?>
+    <?php endif; ?>
 
-        <?php if (!empty($error)): ?>
+    <?php $LAVA = lava_instance(); ?>
 
-            <div class="alert error">
-                <?= htmlspecialchars($error); ?>
-            </div>
+    <div class="validation-errors">
+        <?= $LAVA->form_validation->errors(); ?>
+    </div>
 
-        <?php endif; ?>
+    <form method="POST">
 
-        <?php $errors = $LAVA->form_validation->errors(); ?>
+        <div class="form-group">
+            <label>First Name</label>
+            <input
+                type="text"
+                name="firstname"
+                value="<?= htmlspecialchars($user['firstname'] ?? ''); ?>"
+            >
+        </div>
 
-        <?php if ($errors): ?>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input
+                type="text"
+                name="lastname"
+                value="<?= htmlspecialchars($user['lastname'] ?? ''); ?>"
+            >
+        </div>
 
-            <div class="alert error">
-                <?= $errors; ?>
-            </div>
+        <div class="form-group">
+            <label>Year</label>
 
-        <?php endif; ?>
+            <select name="year">
 
-        <form
-            method="POST"
-            action="<?= base_url('users/edit/' . $user['id']); ?>">
+                <option value="">Select Year</option>
 
-            <div class="form-group">
+                <option value="1st" <?= (($user['year'] ?? '') === '1st') ? 'selected' : ''; ?>>
+                    1st Year
+                </option>
 
-                <label>Username</label>
+                <option value="2nd" <?= (($user['year'] ?? '') === '2nd') ? 'selected' : ''; ?>>
+                    2nd Year
+                </option>
 
-                <input
-                    type="text"
-                    name="username"
-                    value="<?= htmlspecialchars($user['username']); ?>">
+                <option value="3rd" <?= (($user['year'] ?? '') === '3rd') ? 'selected' : ''; ?>>
+                    3rd Year
+                </option>
 
-            </div>
+                <option value="4th" <?= (($user['year'] ?? '') === '4th') ? 'selected' : ''; ?>>
+                    4th Year
+                </option>
 
-            <div class="form-group">
+            </select>
+        </div>
 
-                <label>New Password</label>
+        <div class="form-group">
+            <label>Course</label>
 
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Leave blank to keep current password">
+            <input
+                type="text"
+                name="course"
+                value="<?= htmlspecialchars($user['course'] ?? ''); ?>"
+            >
+        </div>
 
-            </div>
+        <div class="form-group">
+            <label>Username</label>
 
-            <div class="form-group">
+            <input
+                type="text"
+                name="username"
+                value="<?= htmlspecialchars($user['username'] ?? ''); ?>"
+            >
+        </div>
 
-                <label>Confirm New Password</label>
+        <div class="form-group">
+            <label>Password</label>
 
-                <input
-                    type="password"
-                    name="confirm_password"
-                    placeholder="Confirm new password">
+            <input
+                type="password"
+                name="password"
+                placeholder="Leave blank to keep current password"
+            >
+        </div>
 
-            </div>
+        <div class="form-group">
+            <label>Confirm Password</label>
 
-            <button
-                type="submit"
-                class="btn btn-primary full">
+            <input
+                type="password"
+                name="confirm_password"
+                placeholder="Leave blank to keep current password"
+            >
+        </div>
+
+        <div class="form-actions">
+
+            <button type="submit">
                 Update User
             </button>
 
-        </form>
+            <a href="<?= base_url('users'); ?>">
+                Back to Users
+            </a>
 
-        <a
-            href="<?= base_url('users'); ?>"
-            class="back-link">
-            ← Back to Student Users
-        </a>
+        </div>
 
-    </div>
+    </form>
 
 </div>
 

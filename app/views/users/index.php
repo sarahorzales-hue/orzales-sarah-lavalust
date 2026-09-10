@@ -6,54 +6,57 @@
 
     <title>Student User Management</title>
 
-    <link rel="stylesheet"
-          href="<?= base_url('css/users.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('public/css/users.css'); ?>">
 </head>
 
 <body>
 
-<div class="page">
+<div class="container">
 
-    <div class="header">
+    <div class="page-header">
         <div>
             <h1>Student User Management</h1>
             <p>Manage student accounts and records.</p>
         </div>
 
-        <a href="<?= base_url('users/create'); ?>"
-           class="btn btn-primary">
+        <a href="<?= base_url('users/create'); ?>" class="button">
             + Create User
         </a>
     </div>
 
-    <div class="card">
+    <div class="section-header">
+        <h2>Student Accounts</h2>
 
-        <div class="card-title">
-            <h2>Student Accounts</h2>
-            <span><?= count($users); ?> active users</span>
+        <span>
+            <?= count($users); ?> active users
+        </span>
+    </div>
+
+    <?php if (empty($users)): ?>
+
+        <div class="empty">
+            No active users found.
         </div>
 
-        <?php if (empty($users)): ?>
+    <?php else: ?>
 
-            <div class="empty">
-                No student accounts found.
-            </div>
+        <div class="table-container">
 
-        <?php else: ?>
+            <table>
 
-            <div class="table-wrapper">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Year</th>
+                        <th>Course</th>
+                        <th>Username</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
 
-                <table>
-
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Username</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
+                <tbody>
 
                     <?php foreach ($users as $user): ?>
 
@@ -63,28 +66,38 @@
                                 <?= htmlspecialchars($user['id']); ?>
                             </td>
 
-                            <td class="username">
-                                <?= htmlspecialchars($user['username']); ?>
+                            <td>
+                                <?= htmlspecialchars($user['firstname']); ?>
                             </td>
 
                             <td>
+                                <?= htmlspecialchars($user['lastname']); ?>
+                            </td>
 
-                                <div class="actions">
+                            <td>
+                                <?= htmlspecialchars($user['year']); ?>
+                            </td>
 
-                                    <a
-                                        href="<?= base_url('users/edit/' . $user['id']); ?>"
-                                        class="btn btn-edit">
-                                        Edit
-                                    </a>
+                            <td>
+                                <?= htmlspecialchars($user['course']); ?>
+                            </td>
 
-                                    <a
-                                        href="<?= base_url('users/delete/' . $user['id']); ?>"
-                                        class="btn btn-delete"
-                                        onclick="return confirm('Are you sure you want to delete this account?');">
-                                        Delete
-                                    </a>
+                            <td>
+                                <?= htmlspecialchars($user['username']); ?>
+                            </td>
 
-                                </div>
+                            <td class="actions">
+
+                                <a href="<?= base_url('users/edit/' . $user['id']); ?>">
+                                    Edit
+                                </a>
+
+                                <a
+                                    href="<?= base_url('users/delete/' . $user['id']); ?>"
+                                    onclick="return confirm('Are you sure you want to delete this user?');"
+                                >
+                                    Delete
+                                </a>
 
                             </td>
 
@@ -92,15 +105,13 @@
 
                     <?php endforeach; ?>
 
-                    </tbody>
+                </tbody>
 
-                </table>
+            </table>
 
-            </div>
+        </div>
 
-        <?php endif; ?>
-
-    </div>
+    <?php endif; ?>
 
 </div>
 
