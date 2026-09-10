@@ -3,35 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Management</title>
+
+    <title>Student User Management</title>
+
+    <link rel="stylesheet"
+          href="<?= base_url('css/users.css'); ?>">
 </head>
+
 <body>
 
-    <h1>User Management</h1>
+<div class="page">
 
-    <table border="1" cellpadding="10">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Username</th>
-            </tr>
-        </thead>
+    <div class="header">
+        <div>
+            <h1>Student User Management</h1>
+            <p>Manage student accounts and records.</p>
+        </div>
 
-        <tbody>
-            <?php foreach ($users as $user): ?>
-                <tr>
-                    <td><?= $user['id']; ?></td>
-                    <td><?= $user['firstname']; ?></td>
-                    <td><?= $user['lastname']; ?></td>
-                    <td><?= $user['email']; ?></td>
-                    <td><?= $user['username']; ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+        <a href="<?= base_url('users/create'); ?>"
+           class="btn btn-primary">
+            + Create User
+        </a>
+    </div>
+
+    <div class="card">
+
+        <div class="card-title">
+            <h2>Student Accounts</h2>
+            <span><?= count($users); ?> active users</span>
+        </div>
+
+        <?php if (empty($users)): ?>
+
+            <div class="empty">
+                No student accounts found.
+            </div>
+
+        <?php else: ?>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                    <?php foreach ($users as $user): ?>
+
+                        <tr>
+
+                            <td>
+                                <?= htmlspecialchars($user['id']); ?>
+                            </td>
+
+                            <td class="username">
+                                <?= htmlspecialchars($user['username']); ?>
+                            </td>
+
+                            <td>
+
+                                <div class="actions">
+
+                                    <a
+                                        href="<?= base_url('users/edit/' . $user['id']); ?>"
+                                        class="btn btn-edit">
+                                        Edit
+                                    </a>
+
+                                    <a
+                                        href="<?= base_url('users/delete/' . $user['id']); ?>"
+                                        class="btn btn-delete"
+                                        onclick="return confirm('Are you sure you want to delete this account?');">
+                                        Delete
+                                    </a>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                    <?php endforeach; ?>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        <?php endif; ?>
+
+    </div>
+
+</div>
 
 </body>
 </html>
