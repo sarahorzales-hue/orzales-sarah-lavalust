@@ -78,11 +78,6 @@
             color: #000000;
         }
 
-        .note {
-            margin-top: 18px;
-            font-size: 12px;
-            line-height: 1.5;
-        }
     </style>
 </head>
 
@@ -125,11 +120,6 @@
         </button>
 
     </form>
-
-    <div class="note">
-        Laboratory Exercise No. 5<br>
-        CRUD Application with Authentication
-    </div>
 
 </div>
 
