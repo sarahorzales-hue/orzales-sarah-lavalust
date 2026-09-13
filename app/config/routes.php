@@ -57,3 +57,15 @@ $router->match('/users/create','UsersController::create','GET|POST');
 $router->match('/users/edit/{id}','UsersController::edit','GET|POST');
 
 $router->get('/users/delete/{id}','UsersController::delete');
+
+$router->match('/login','ProductController::login','GET|POST');
+
+$router->get('/logout','ProductController::logout');
+
+$router->get('/products','ProductController::index');
+
+$router->match('/products/create','ProductController::create','GET|POST');
+
+$router->match('/products/edit/{id}','ProductController::edit','GET|POST');
+
+$router->get('/products/delete/{id}','ProductController::delete');
