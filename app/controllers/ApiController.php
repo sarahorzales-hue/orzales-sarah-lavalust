@@ -6,14 +6,15 @@ class ApiController extends Controller
     private $api;
 
     public function __construct()
-{
-    parent::__construct();
+    {
+        parent::__construct();
 
-    $this->call->model('ProductModel');
-    $this->call->library('api');
+        $this->call->model('ProductModel');
+        $this->call->library('api');
 
-    $this->api = lava_instance()->api;
-}
+        // Get the loaded API library instance
+        $this->api = lava_instance()->api;
+    }
 
     /*
     |--------------------------------------------------------------------------
@@ -30,26 +31,26 @@ class ApiController extends Controller
         $username = $data['username'] ?? '';
         $password = $data['password'] ?? '';
 
-        /*
-         * For this activity, use the same administrator credentials
-         * already used by the existing ProductController login.
-         */
+        // Administrator credentials for the activity
         if ($username !== 'admin' || $password !== 'admin12345') {
-            $this->api->respond_error('Invalid username or password.', 401);
+            $this->api->respond_error(
+                'Invalid username or password.',
+                401
+            );
         }
 
         $tokens = $this->api->issue_tokens([
-            'id' => 1,
-            'role' => 'admin',
+            'id'     => 1,
+            'role'   => 'admin',
             'scopes' => ['read', 'write']
         ]);
 
         $this->api->respond([
             'message' => 'Login successful.',
             'user' => [
-                'id' => 1,
+                'id'       => 1,
                 'username' => 'admin',
-                'role' => 'admin'
+                'role'     => 'admin'
             ],
             'tokens' => $tokens
         ]);
@@ -79,7 +80,7 @@ class ApiController extends Controller
         $products = $this->ProductModel->all();
 
         $this->api->respond([
-            'success' => true,
+            'success'  => true,
             'products' => $products
         ]);
     }
@@ -99,12 +100,20 @@ class ApiController extends Controller
         $data = $this->api->body();
 
         $product_name = $data['product_name'] ?? '';
-        $description = $data['description'] ?? '';
-        $price       = $data['price'] ?? '';
-        $quantity    = $data['quantity'] ?? '';
+        $description  = $data['description'] ?? '';
+        $price        = $data['price'] ?? '';
+        $quantity     = $data['quantity'] ?? '';
 
-        if ($product_name === '' || $description === '' || $price === '' || $quantity === '') {
-            $this->api->respond_error('All product fields are required.', 422);
+        if (
+            $product_name === '' ||
+            $description === '' ||
+            $price === '' ||
+            $quantity === ''
+        ) {
+            $this->api->respond_error(
+                'All product fields are required.',
+                422
+            );
         }
 
         $id = $this->ProductModel->insert([
@@ -138,18 +147,29 @@ class ApiController extends Controller
         $product = $this->ProductModel->find($id);
 
         if (!$product) {
-            $this->api->respond_error('Product not found.', 404);
+            $this->api->respond_error(
+                'Product not found.',
+                404
+            );
         }
 
         $data = $this->api->body();
 
         $product_name = $data['product_name'] ?? '';
-        $description = $data['description'] ?? '';
-        $price       = $data['price'] ?? '';
-        $quantity    = $data['quantity'] ?? '';
+        $description  = $data['description'] ?? '';
+        $price        = $data['price'] ?? '';
+        $quantity     = $data['quantity'] ?? '';
 
-        if ($product_name === '' || $description === '' || $price === '' || $quantity === '') {
-            $this->api->respond_error('All product fields are required.', 422);
+        if (
+            $product_name === '' ||
+            $description === '' ||
+            $price === '' ||
+            $quantity === ''
+        ) {
+            $this->api->respond_error(
+                'All product fields are required.',
+                422
+            );
         }
 
         $this->ProductModel->update(
@@ -186,7 +206,10 @@ class ApiController extends Controller
         $product = $this->ProductModel->find($id);
 
         if (!$product) {
-            $this->api->respond_error('Product not found.', 404);
+            $this->api->respond_error(
+                'Product not found.',
+                404
+            );
         }
 
         $this->ProductModel->delete($id);
