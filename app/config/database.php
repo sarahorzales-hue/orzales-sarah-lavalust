@@ -59,10 +59,10 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 $database['main'] = array(
     'driver'    => '',
-    'hostname'  => getenv('DB_HOST') ?: 'localhost',
-    'port'      => getenv('DB_PORT') ?: '',
-    'username'  => getenv('DB_USERNAME') ?: 'root',
-    'password'  => getenv('DB_PASSWORD') ?: '',
+    'hostname'  => getenv('DB_HOST') ?: 'lavalust-mysql-sarahorzales-13b9.e.aivencloud.com',
+    'port'      => getenv('DB_PORT') ?: '28214',
+    'username'  => getenv('DB_USERNAME') ?: 'avnadmin',
+    'password'  => getenv('DB_PASSWORD') ?: 'SECRET',
     'database'  => getenv('DB_NAME') ?: 'mydb',
     'charset'   => '',
     'dbprefix'  => '',
