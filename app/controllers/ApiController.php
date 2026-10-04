@@ -6,14 +6,12 @@ class ApiController extends Controller
     private $api;
 
     public function __construct()
-    {
-        parent::__construct();
+{
+    parent::__construct();
 
-        $this->call->model('ProductModel');
-        $this->call->library('api');
-
-        $this->api = $this->api;
-    }
+    $this->call->model('ProductModel');
+    $this->call->library('api');
+}
 
     /*
     |--------------------------------------------------------------------------
