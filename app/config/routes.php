@@ -90,12 +90,12 @@ $router->get('status', 'MigrationController::status');
 |--------------------------------------------------------------------------
 */
 
-$router->match('/api/login', 'ApiController::login', 'POST|OPTIONS');
+$router->match('/api/login', 'ApiController::login', 'POST');
 
-$router->match('/api/products', 'ApiController::products', 'GET|OPTIONS');
+$router->match('/api/products', 'ApiController::products', 'GET');
 
-$router->match('/api/products/create', 'ApiController::create_product', 'POST|OPTIONS');
+$router->match('/api/products/create', 'ApiController::create_product', 'POST');
 
-$router->match('/api/products/{id}', 'ApiController::update_product', 'PUT|OPTIONS');
+$router->match('/api/products/{id}', 'ApiController::update_product', 'PUT');
 
-$router->match('/api/products/{id}/delete', 'ApiController::delete_product', 'DELETE|OPTIONS');
+$router->match('/api/products/{id}/delete', 'ApiController::delete_product', 'DELETE');
