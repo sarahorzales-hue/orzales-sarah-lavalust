@@ -11,6 +11,8 @@ class ApiController extends Controller
 
     $this->call->model('ProductModel');
     $this->call->library('api');
+
+    $this->api = lava_instance()->api;
 }
 
     /*
