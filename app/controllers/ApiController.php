@@ -3,7 +3,6 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 class ApiController extends Controller
 {
-    private $api;
 
     public function __construct()
     {
@@ -12,8 +11,6 @@ class ApiController extends Controller
         $this->call->model('ProductModel');
         $this->call->library('api');
 
-        // Get the loaded API library instance
-        $this->api = lava_instance()->api;
     }
 
     /*
