@@ -477,16 +477,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
      * @return string|null
      */
     public function get_bearer_token()
-    {
-        $header = $_SERVER['HTTP_AUTHORIZATION'] ?? $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] ?? '';
+{
+    $header = $_SERVER['HTTP_AUTHORIZATION']
+        ?? $_SERVER['REDIRECT_HTTP_AUTHORIZATION']
+        ?? '';
 
-        if (!$header && function_exists('apache_request_headers')) {
-            $headers = apache_request_headers();
-            $header = $headers['Authorization'] ?? '';
-        }
-
-        return preg_match('/Bearer\s(\S+)/i', $header, $matches) ? $matches[1] : null;
+    if (!$header && function_exists('apache_request_headers')) {
+        $headers = apache_request_headers();
+        $header = $headers['Authorization'] ?? '';
     }
+
+    if (preg_match('/Bearer\s+(\S+)/i', $header, $matches)) {
+        return $matches[1];
+    }
+
+    return null;
+}
 
 
     /**
