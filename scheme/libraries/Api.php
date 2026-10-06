@@ -3,7 +3,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 /**
  * ------------------------------------------------------------------
  * LavaLust - an opensource lightweight PHP MVC Framework
- * ------------------------------------------------------------------
+ * -----------------p-------------------------------------------------
  *
  * MIT License
  * 
@@ -167,10 +167,13 @@ class Api
 
         $this->handle_cors();
 
-        if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-            http_response_code(204);
-            exit;
-        }
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+    header('Access-Control-Allow-Headers: Content-Type, Authorization');
+    http_response_code(204);
+    exit;
+}
     }
 
     // --------------------------
